@@ -16,6 +16,12 @@ with _customers as (
 
 )
 
+, employees as (
+
+    select * from {{ ref('employees')}}
+
+)
+
 , customer_orders as (
 
     select
@@ -42,9 +48,12 @@ final as (
         , customer_orders.most_recent_order_date
         , coalesce(customer_orders.number_of_orders, 0) as number_of_orders
         , customer_orders.lifetime_value
+        , employee_id
     from _customers
 
     left join customer_orders using (customer_id)
+
+    left join employees using (customer_id)
 
 
 )
