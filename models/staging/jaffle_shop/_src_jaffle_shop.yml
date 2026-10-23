@@ -1,8 +1,8 @@
 sources:
     - name: jaffle_shop
       description: A clone of a Postrgres database
-      database: dbt-tutorial
-      schema: jaffle_shop
+      database: jaffle-shop-505013
+      schema: dbt_fundamentals
       tables:
         - name: customers
           description: Raw customers data
@@ -13,6 +13,7 @@ sources:
                 - unique
                 - not_null
         - name: orders
+          identifier: raw_orders
           config:
             loaded_at_field: _etl_loaded_at
             freshness:
