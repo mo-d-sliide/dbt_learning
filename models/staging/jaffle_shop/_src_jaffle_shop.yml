@@ -5,6 +5,7 @@ sources:
       schema: dbt_fundamentals
       tables:
         - name: customers
+          identifier: raw_customers
           description: Raw customers data
           columns:
             - name: id
